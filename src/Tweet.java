@@ -1,20 +1,20 @@
 
 public class Tweet {
 	
-	int id;
-	String user;
-	String text;
-	String image;
-	String link;
+	public int id;
+	public String user;
+	public String text;
 	
-	public Tweet(int id, String user, String text, String image, String link){
+	public Tweet(int id, String user, String text){
 		this.id = id;
 		this.user = user;
 		this.text = text;
-		this.image = image;
-		this.link = link;
 	}
 	
+	public Tweet() {
+		// TODO Auto-generated constructor stub
+	}
+
 	public int getId() {
 		return id;
 	}
@@ -33,17 +33,4 @@ public class Tweet {
 	public void setText(String text) {
 		this.text = text;
 	}
-	public String getImage() {
-		return image;
-	}
-	public void setImage(String image) {
-		this.image = image;
-	}
-	public String getLink() {
-		return link;
-	}
-	public void setLink(String link) {
-		this.link = link;
-	}
-
 }

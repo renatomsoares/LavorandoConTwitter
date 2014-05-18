@@ -1,3 +1,4 @@
+import java.sql.SQLException;
 import java.util.ArrayList;
 
 import twitter4j.Query;
@@ -15,7 +16,6 @@ public class Utils {
 	private static final String tokenSecret = "3geB9URANyxSbuOkFQHlip5RpJcK3u8Rnh7I4ORmrfviK";
 	private static final String consumerKey = "lm9RqUb6hYJRmQhzjMul5PeSy";
 	private static final String consumerSecret = "Fm7ChwRNwxTwg2hG6pDGdAyoJqtKaO1a114VUf5HwWUFqSt5yy";
-	private static final String tweetLink = "https://twitter.com/tweet/status/";
 	public static Twitter twitter = null;
 
 
@@ -39,9 +39,7 @@ public class Utils {
 				int id = (int) status.getId();
 				String user = status.getUser().getName();
 				String text = status.getText();
-				String image = status.getUser().getProfileImageURL();
-				String link = tweetLink + status.getId(); // Cria URL para o tweet na web.
-				Tweet tweet = new Tweet(id, user, text, image, link);
+				Tweet tweet = new Tweet(id, user, text);
 				tweets.add(tweet);
 			}
 			return tweets;
@@ -60,17 +58,32 @@ public class Utils {
 		}
 	}
 
-	public static void main(String[] args) throws IllegalStateException, TwitterException {
+	public static void main(String[] args) throws IllegalStateException, TwitterException, ClassNotFoundException {
 
-		Twitter twitter = createTwitter();
-		System.out.println(twitter.getScreenName());
-		
-		ArrayList<Tweet> t = search(twitter, "renatomsoares", 10);
-		for (int i = 0 ; i < t.size() ; i++) {
-			System.out.println(t.get(i).getUser() + ": " + t.get(i).getText());
+		ITweetController tweetController = null;
+		try {
+			tweetController = new TweetController().getInstance();
+		} catch (SQLException e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
 		}
+		//tweetController.inserirTweet(121, "teste", "oi");
+		
+		DataList data = new DataList();
+		Twitter twitter = createTwitter();
+		
+		//System.out.println(twitter.getScreenName());
+		
+		for (int j = 0 ; j < data.dataList.size() ; j++) {
 
-
+			ArrayList<Tweet> t = search(twitter, data.dataList.get(j), 10);
+			for (int i = 0 ; i < t.size() ; i++) {
+				
+				System.out.println(t.get(i).getId() + "  " + t.get(i).getUser() + ": " + t.get(i).getText());
+				tweetController.inserirTweet(t.get(i).getId(), t.get(i).getUser(), t.get(i).getText());
+			}
+		}
+		
 	}
 }
 
