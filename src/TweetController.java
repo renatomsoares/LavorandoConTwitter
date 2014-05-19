@@ -18,8 +18,8 @@ public class TweetController implements ITweetController {
 		return instance;
 	}
 
-	public void inserirTweet(int id, String user, String text) {
-		Tweet t_new = new Tweet(id, user, text);
+	public void inserirTweet(int id, String user, String text, String ss) {
+		Tweet t_new = new Tweet(id, user, text, ss);
 		try {
 			tweet.create(t_new);
 		} catch (SQLException e) {
@@ -37,8 +37,8 @@ public class TweetController implements ITweetController {
 		}
 	}
 	
-	public void atualizarTweet(int id, String user, String text){
-		Tweet t_updated = new Tweet(id, user, text);
+	public void atualizarTweet(int id, String user, String text, String ss){
+		Tweet t_updated = new Tweet(id, user, text, ss);
 		try {
 			tweet.update(t_updated);
 		} catch (SQLException e) {

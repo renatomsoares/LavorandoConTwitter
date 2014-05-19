@@ -13,12 +13,13 @@ public class TweetDAO implements ITweetDAO {
 	// Adiciona um tweet no Banco
 	public void create(Tweet tweet) throws SQLException {
 		
-		String sql = "INSERT INTO tweet (id, user, text) VALUES(?,?,?)";
+		String sql = "INSERT INTO tweet (id, user, text, ss) VALUES(?,?,?,?)";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		
 		stmt.setInt(1, tweet.getId());
 		stmt.setString(2, tweet.getUser());
 		stmt.setString(3, tweet.getText());
+		stmt.setString(4, tweet.getSS());
 		
 		stmt.execute();
 		stmt.close();
@@ -38,12 +39,13 @@ public class TweetDAO implements ITweetDAO {
 	// Altera os dados do tweet
 	public void update(Tweet tweet) throws SQLException {
 		
-		String sql = "update tweet set id = ?, user = ?, text = ? where id = ?";
+		String sql = "update tweet set id = ?, user = ?, text = ?, ss = ? where id = ?";
 		PreparedStatement stmt = connection.prepareStatement(sql);
 		
 		stmt.setInt(1, tweet.getId());
 		stmt.setString(2, tweet.getUser());
 		stmt.setString(3, tweet.getText());
+		stmt.setString(4, tweet.getSS());
 		
 		stmt.execute();
 		stmt.close();	
@@ -64,6 +66,7 @@ public class TweetDAO implements ITweetDAO {
 			tweet.setId(rs.getInt("id"));
 			tweet.setUser(rs.getString("user"));
 			tweet.setText(rs.getString("text"));
+			tweet.setSS(rs.getString("ss"));
 			minhaLista.add(tweet);
 		}	
 		rs.close();
@@ -83,6 +86,7 @@ public class TweetDAO implements ITweetDAO {
 			tweet.setId(rs.getInt("id"));
 			tweet.setUser(rs.getString("user"));
 			tweet.setText(rs.getString("text"));
+			tweet.setSS(rs.getString("ss"));
 			minhaLista.add(tweet);
 		}	
 		rs.close();

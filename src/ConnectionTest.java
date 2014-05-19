@@ -9,3 +9,7 @@ public class ConnectionTest {
         connection.close();
     }
 }
+
+/*
+ * CREATE TABLE tweet (number INTEGER NOT NULL AUTO_INCREMENT, id INTEGER, user VARCHAR(50), text TEXT CHARACTER SET utf8, ss VARCHAR(50), PRIMARY KEY(number)) ENGINE=MyISAM DEFAULT CHARSET=utf8;
+ */

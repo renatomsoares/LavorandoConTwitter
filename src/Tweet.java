@@ -4,11 +4,13 @@ public class Tweet {
 	public int id;
 	public String user;
 	public String text;
+	public String ss;
 	
-	public Tweet(int id, String user, String text){
+	public Tweet(int id, String user, String text, String ss){
 		this.id = id;
 		this.user = user;
 		this.text = text;
+		this.ss = ss;
 	}
 	
 	public Tweet() {
@@ -32,5 +34,12 @@ public class Tweet {
 	}
 	public void setText(String text) {
 		this.text = text;
+	}
+	
+	public String getSS() {
+		return ss;
+	}
+	public void setSS(String ss) {
+		this.ss = ss;
 	}
 }

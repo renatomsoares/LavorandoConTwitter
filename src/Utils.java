@@ -39,7 +39,8 @@ public class Utils {
 				int id = (int) status.getId();
 				String user = status.getUser().getName();
 				String text = status.getText();
-				Tweet tweet = new Tweet(id, user, text);
+				
+				Tweet tweet = new Tweet(id, user, text, queryString);
 				tweets.add(tweet);
 			}
 			return tweets;
@@ -76,11 +77,14 @@ public class Utils {
 		
 		for (int j = 0 ; j < data.dataList.size() ; j++) {
 
-			ArrayList<Tweet> t = search(twitter, data.dataList.get(j), 10);
+			ArrayList<Tweet> t = search(twitter, data.dataList.get(j), 3);
 			for (int i = 0 ; i < t.size() ; i++) {
-				
-				System.out.println(t.get(i).getId() + "  " + t.get(i).getUser() + ": " + t.get(i).getText());
-				tweetController.inserirTweet(t.get(i).getId(), t.get(i).getUser(), t.get(i).getText());
+				int _id = t.get(i).getId();
+				String _user = t.get(i).getUser();
+				String _text = t.get(i).getText();
+				String _ss = t.get(i).getSS();
+
+				tweetController.inserirTweet(_id, _user, _text, _ss);
 			}
 		}
 		

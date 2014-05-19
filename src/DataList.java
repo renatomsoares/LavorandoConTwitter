@@ -18,7 +18,7 @@ public class DataList {
 		this.dataList.add("M5S");
 		this.dataList.add("Maroni");
 		this.dataList.add("Monti");
-		/*this.dataList.add("Napolitano");
+		this.dataList.add("Napolitano");
 		this.dataList.add("PD");
 		this.dataList.add("Renzi"); 
 		this.dataList.add("SEL");
@@ -338,6 +338,6 @@ public class DataList {
 		this.dataList.add("votato"); 
 		this.dataList.add("voterà"); 
 		this.dataList.add("voti"); 
-		this.dataList.add("voto");*/
+		this.dataList.add("voto");
 	}
 }
